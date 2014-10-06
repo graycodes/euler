@@ -1,6 +1,8 @@
 (ns example.core
   (:require [clojure.math.numeric-tower :as math]))
 
+(def number 600851475143)
+
 (defn isPrime [num] 
   (if (< num 3)
     true
@@ -17,9 +19,9 @@
   (= 0 (mod large small)))
 
 (defn isFacOfNum [small]
-  (isFacOf small 600851475143))
+  (isFacOf small number))
 
 (defn largestPrime [num]
-  (let [facs (filter isFacOfNum (range (math/ceil (math/sqrt num)) 0 -1))]
-    facs))
+  (let [facs (filter isFacOfNum (range (int (math/ceil (math/sqrt num))) 0 -1))]
+    (first (filter isPrime facs))))
 
